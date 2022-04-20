@@ -1,0 +1,1 @@
+<?php /* funkcionalni reseni v php */ echo array_reduce(range(1, readline('enter number: ')), fn($previous, $item) => $previous.$item.' '.(($item % 3 == 0) ? 'fizz' : '').(($item % 5 == 0) ? 'buzz' : '').PHP_EOL);
