@@ -1,3 +1,9 @@
 # Prvocisla
 
-Na standartnim vstupu mame postupne zadavana cisla, vypiste ta, ktera jsou prvocisla. Cislo 1 uvazujte jako prvocislo
+Funkce, ktera ziska pole cisel a vrati pole tech, ktera jsou prvocisla
+
+```
+[1, 3, 50, 10]
+// ->
+[50, 10]
+```
