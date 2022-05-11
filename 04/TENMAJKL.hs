@@ -1,5 +1,5 @@
 isPrime :: Int -> Bool
-isPrime number = length(takeWhile (\item -> number `mod` item /= 0) [2..number `div` 2]) < number `div` 2 - 1 -- TODO sqrt
+isPrime number = length(takeWhile (\item -> number `mod` item /= 0) [2..number `div` 2]) == number `div` 2 - 1 -- TODO sqrt
 
 allPrime :: [Int] -> [Int]
 allPrime = filter isPrime
