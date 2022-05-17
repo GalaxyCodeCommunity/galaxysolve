@@ -9,3 +9,5 @@ function f(int $a, int $b)
 
 	return $out;
 }
+
+echo implode(', ', f(1, 5)) . PHP_EOL . implode(', ', f(5, 1));
