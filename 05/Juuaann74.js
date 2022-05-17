@@ -9,6 +9,14 @@ function arrayMax(num1,num2){
     console.log(newArr);
 
 
+    /*
+    
+    Unfinished
+    
+    TODO: Reverse sorting
+    
+    
+    */
 
 }
 
