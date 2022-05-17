@@ -1,22 +1,23 @@
 const log = (body: any)=>{
     console.log(`${body}`);
 }
-
-const inRange=(num1: number, num2:number)=>{
-
-    let array: [] = [];
-    for (let i = num1; i < num2 + 1; i++) {
-        // @ts-ignore
-        array.push(i)
+const main = (num1: number, num2:number, reversed: boolean) => {
+    if(reversed === false) {
+        let array: [] = [];
+        for (let i = num1; i < num2 + 1; i++) {
+            // @ts-ignore
+            array.push(i)
+        }
+        return array;
     }
-    return array;
-}
-const isRangeReversed=(num: number, num2: number)=>{
-    let arrayReversed: [] = [];
-    for (let i = num; i > num2 - 1; i--) {
-        // @ts-ignore
-        arrayReversed.push(i)
+    if(reversed === true) {
+        let arrayReversed: [] = [];
+        for (let i = num1; i > num2 - 1; i--) {
+            // @ts-ignore
+            arrayReversed.push(i)
+        }
+        return arrayReversed;
     }
-    return arrayReversed;
 }
-log(isRangeReversed(20, 10))
+
+log(main(20, 1, true))
