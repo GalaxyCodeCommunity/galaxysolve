@@ -5,5 +5,5 @@ Funkce, ktera ziska pole cisel a vrati pole tech, ktera jsou prvocisla
 ```
 [1, 3, 50, 10]
 // ->
-[1, 3]
+[3]
 ```
