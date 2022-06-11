@@ -1,6 +1,7 @@
 // .NET version: 6.0
 
-FizzBuzz(Console.Out, 16);
+Console.Write("cislo: ");
+FizzBuzz(Console.Out, int.Parse(Console.ReadLine()!));
 
 static void FizzBuzz(TextWriter @out, int num)
 {
