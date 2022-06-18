@@ -4,5 +4,6 @@ main = do
 
 range :: Integral a => a -> a -> [a]
 range a b
-    | a < b = [a..b]
-    | otherwise = reverse [b..a]
+    | a == b = [a]
+    | a < b = a : range (a + 1) b
+    | otherwise = a : range (a - 1) b
