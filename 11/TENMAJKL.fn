@@ -1,0 +1,10 @@
+f{isLeap args{year:int} bool
+    =={%{year 4} 0}
+}
+
+f{entry args{w:World} World
+    echo{
+        echo{w isLeap{2015}}
+        isLeap{2016}
+    }
+}
