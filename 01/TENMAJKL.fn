@@ -1,0 +1,31 @@
+-- Since fragment dont support generics yet pairs can have only ints so 3 5 15
+
+f{fizzbuzz args{target:Pair} Pair
+    if{?{target}
+        pair{0 null}
+        pair{
+            *{
+                if{=={%{head{target} 3} 0}
+                    3 -- fizz
+                    1
+                }
+                if{=={%{head{target} 5} 0}
+                    5 -- buzz
+                    1
+                }
+            }
+            fizzbuzz{tail{target}}
+        }
+    }
+}
+
+f{out args{pair:Pair world:World} World
+    if{?{pair}
+        world
+        echo{head{pair} out{tail{pair} world}}
+    }
+}
+
+f{entry args{world:World} World
+    out{fizzbuzz{..{1 100}} world}
+}
