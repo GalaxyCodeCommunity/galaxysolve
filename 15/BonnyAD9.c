@@ -4,10 +4,12 @@
 
 void translateString(FILE *out, char *str);
 void translateChar(FILE *out, char c);
+void doNext(FILE *out, int count, char op);
+void repeat(FILE *out, char c, int count);
 
 int main()
 {
-    translateString(stdout, "ahoj"); // --[-->+<]>------------------------------.>--[-->+<]>-----------------------.>--[-->+<]>----------------.>--[-->+<]>---------------------.>
+    translateString(stdout, "ahoj"); // --[-->+<]--------[-------->-<]>+.>--[-->+<]---[----------->-<]>.>--[-->+<]>----------------.>--[-->+<]>---------------------.>
 }
 
 void translateString(FILE *out, char *str)
@@ -19,24 +21,34 @@ void translateString(FILE *out, char *str)
 // still quite inefficient but much better than just repeating +
 void translateChar(FILE *out, char c)
 {
-    const int sl = 255 / c;
-    int mc = 255 % sl;
-    const int fix = (255 - mc) / sl - c;
+    doNext(out, c, '+');
+    fputs(".>", out);
+}
 
-    while (mc--)
-        fputc('-', out);
+void doNext(FILE *out, int count, char op)
+{
+    if (count <= 21)
+    {
+        fputc('>', out);
+        repeat(out, op, count);
+        return;
+    }
+    
+    const int sl = 255 / count;
+    const int mc = 255 % sl;
+    const int fix = (255 - mc) / sl - count;
+
+    repeat(out, '-', mc);
 
     fputs("-[", out);
+    repeat(out, '-', sl);
+    fprintf(out, ">%c<]", op);
 
-    mc = sl;
-    while (mc--)
-        fputc('-', out);
+    doNext(out, fix, op == '-' ? '+' : '-');
+}
 
-    fputs(">+<]>", out);
-
-    mc = fix;
-    while (mc--)
-        fputc('-', out);
-
-    fputs(".>", out);
+void repeat(FILE *out, char c, int count)
+{
+    while (count--)
+        fputc(c, out);
 }
