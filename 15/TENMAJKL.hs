@@ -20,4 +20,4 @@ convert target last
     | null target = ""
     | otherwise = convertChar (head target) last ++ convert (tail target) (ord (head target))
 
-main = print (convert "parek v rohliku" 0)
+main = print (convert "a" 0)
