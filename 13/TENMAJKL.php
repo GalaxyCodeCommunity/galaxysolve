@@ -9,6 +9,8 @@ final class Parser
 
     private bool $or = false;
 
+    private bool $repeat = false;
+
     public static function make(): self
     {
         return new self();
@@ -34,6 +36,18 @@ final class Parser
     {
         $this->determin(['self']);
         return $this;
+    }
+
+    public function repeat(): self
+    {
+        $this->repeat = true;
+
+        return $this;
+    }
+
+    public function end(int $times = 1): self
+    {
+        $this->parser[array_key_last($this->parser)] = ['repeat', [$times, $this->parser[array_key_last($this->parser)]]];
     }
 
     public function parse(string $target): array
