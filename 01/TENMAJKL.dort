@@ -1,0 +1,20 @@
+1 1 while
+    pop
+    clone printint ' ' putchar
+    clone
+    3 % 0 == if
+        "fizz" putstring
+    fi
+    pop
+    clone
+    5 % 0 == if
+        "buzz" putstring
+    fi
+    pop
+    clone
+    10 putchar
+
+    1 +
+    clone 
+    100 !=
+end
