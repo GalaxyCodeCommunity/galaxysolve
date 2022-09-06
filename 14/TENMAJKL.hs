@@ -5,118 +5,118 @@
 
 -- Table : https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Morse-code-tree.svg/1280px-Morse-code-tree.svg.png
 
-data Character = Character {
+data Character = Empty | Character {
     value :: Char,
-    dot :: Maybe Character,
-    line :: Maybe Character 
+    dot :: Character,
+    line :: Character 
 }
 
 newCharacter :: Character
 newCharacter = Character {
     value = ' ',
-    dot = Just Character {
+    dot = Character {
         value = 'e',
-        dot = Just Character {
+        dot = Character {
             value = 'i',
-            dot = Just Character {
+            dot = Character {
                 value = 's',
-                dot = Just Character {
+                dot = Character {
                     value = 'h',
-                    dot = Nothing,
-                    line = Nothing
+                    dot = Empty,
+                    line = Empty
                 },
-                line = Just Character {
+                line = Character {
                     value = 'v',
-                    dot = Nothing,
-                    line = Nothing
+                    dot = Empty,
+                    line = Empty
                 }
             },
-            line = Just Character {
+            line = Character {
                 value = 'u',
-                dot = Just Character {
+                dot = Character {
                     value = 'f',
-                    dot = Nothing,
-                    line = Nothing
+                    dot = Empty,
+                    line = Empty
                 },
-                line = Nothing  
+                line = Empty  
             }
         },
-        line = Just Character {
+        line = Character {
             value = 'a',
-            dot = Just Character {
+            dot = Character {
                 value = 'r',
-                dot = Just Character {
+                dot = Character {
                     value ='l',
-                    dot = Nothing,
-                    line = Nothing 
+                    dot = Empty,
+                    line = Empty 
                 },
-                line = Nothing 
+                line = Empty 
             },
-            line = Just Character {
+            line = Character {
                 value = 'w',
-                dot = Just Character {
+                dot = Character {
                     value = 'p',
-                    dot = Nothing,
-                    line = Nothing 
+                    dot = Empty,
+                    line = Empty 
                 },
-                line = Just Character {
+                line = Character {
                     value = 'j',
-                    dot = Nothing,
-                    line = Nothing 
+                    dot = Empty,
+                    line = Empty 
                 }
             }
         }
     },
-    line = Just Character {
+    line = Character {
         value = 't',
-        dot = Just Character {
+        dot = Character {
             value = 'n',
-            dot = Just Character {
+            dot = Character {
                 value = 'd',
-                dot = Just Character {
+                dot = Character {
                     value = 'b',
-                    dot = Nothing,
-                    line = Nothing
+                    dot = Empty,
+                    line = Empty
                 },
-                line = Just Character {
+                line = Character {
                     value = 'x',
-                    dot = Nothing,
-                    line = Nothing
+                    dot = Empty,
+                    line = Empty
                 }
             },
-            line = Just Character {
+            line = Character {
                 value = 'k',
-                dot = Just Character {
+                dot = Character {
                     value = 'c',
-                    dot = Nothing,
-                    line = Nothing
+                    dot = Empty,
+                    line = Empty
                 },
-                line = Just Character {
+                line = Character {
                     value = 'y',
-                    dot = Nothing,
-                    line = Nothing
+                    dot = Empty,
+                    line = Empty
                 }
             }
         },
-        line = Just Character {
+        line = Character {
             value = 'm',
-            dot = Just Character {
+            dot = Character {
                 value = 'g',
-                dot = Just Character {
+                dot = Character {
                     value ='z',
-                    dot = Nothing,
-                    line = Nothing 
+                    dot = Empty,
+                    line = Empty 
                 },
-                line = Just Character {
+                line = Character {
                     value ='q',
-                    dot = Nothing,
-                    line = Nothing 
+                    dot = Empty,
+                    line = Empty 
                 }
             },
-            line = Just Character {
+            line = Character {
                 value = 'o',
-                dot = Nothing, 
-                line = Nothing 
+                dot = Empty, 
+                line = Empty 
             }
         }
     }
@@ -126,11 +126,9 @@ solve :: Character -> String -> String
 solve morse target = if null target then "" else
     case head target of 
     '.' -> case dot morse of 
-        Just x -> solve x (tail target)
-        Nothing -> "error"
+        x -> solve x (tail target)
     '-' -> case line morse of 
-        Just x -> solve x (tail target)
-        Nothing -> "error"
+        x -> solve x (tail target)
     '|' -> value morse : solve newCharacter (tail target)
     _ -> "error"
 
