@@ -1,4 +1,10 @@
-main = print $ mergeSort [5, 1, -3, 9, 6, 5, 0]
+main = print $ quickSort [5, 1, -3, 9, 6, 5, 0]
+
+-- Average time complexity O(n*log(n))
+quickSort :: (Ord a) => [a] -> [a]
+quickSort [] = []
+quickSort [a] = [a]
+quickSort (a:r) = (quickSort.filter (< a)) r ++ (a : filter (== a) r) ++ (quickSort.filter (> a)) r
 
 -- Time complexity: O(n*log(n))
 mergeSort :: (Ord a) => [a] -> [a]
@@ -19,5 +25,4 @@ merge (a:ar) (b:br)
 halve :: [a] -> ([a], [a])
 halve [] = ([], [])
 halve [a] = ([], [a])
-halve a = (take c a, drop c a)
-    where c = length a `div` 2
+halve a = splitAt (length a `div` 2) a
