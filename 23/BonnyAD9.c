@@ -56,7 +56,6 @@ void bonusCZ(char *str)
 
 int rate(const char *str)
 {
-#define LF_LEN 26
     // lf = lf - avg(lf)
     // cz letter frequencies so that the average is ~0 (less = less frequent)
     static int lf[] = 
@@ -66,6 +65,7 @@ int rate(const char *str)
     };
 
     /* generating the values so that they are integers and the average is ~0
+#define LF_LEN 26
     float avg = 0;
     for (int i = 0; i < LF_LEN; ++i)
         avg += lf[i];
@@ -73,6 +73,7 @@ int rate(const char *str)
 
     for (int i = 0; i< LF_LEN; ++i)
         printf("%d,\n", (int)roundf((lf[i] - avg) * 2));
+#undef LF_LEN
     */
 
     int sum = 0;
@@ -84,5 +85,4 @@ int rate(const char *str)
         sum += lf[isupper(*str) ? *str - 'A' : *str - 'a'];
     }
     return sum;
-#undef LF_LEN
 }
