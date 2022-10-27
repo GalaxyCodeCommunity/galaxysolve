@@ -1,5 +1,5 @@
 # Řešení soustavy lineárních rovnic
-Úkolem je vyřešit soustavu `n` lineárních rovnic o `n` neznámých.
+Úkolem je vyřešit soustavu `n` lineárních rovnic o `n` neznámých. Je zakázáno používat funkce z knihovny jazyka pro řešení soustavy lineárních rovnic, pro výpočet invarzní matice a pro výpočet doplňkové matice.
 
 Například (`n`=3):
 
