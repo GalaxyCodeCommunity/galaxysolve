@@ -1,6 +1,6 @@
 # Hledání v poli
 
-Úkolem je která najde na jakém indexu se nachází hledaný prvek v seřazeném poli. Pokud funkce prvek nenajde, tak vrátí -1.
+Úkolem je která najde na jakém indexu se nachází hledaný prvek v seřazeném poli. Pokud funkce prvek nenajde, tak vrátí nevalidní hodnotu (-1 nebo maximální hodnotu daného typu).
 Je zakázáno používat funkce z knihovny jazyka na hledání.
 
 ```shell
