@@ -28,5 +28,33 @@ function is_sorted(array $array): bool
     return true;
 }
 
+/**
+ * Counting sort
+ * It has big O under n log n, however (in php) it has huge space complexity (worst case O(3n))
+ */
+function counting(array $list): array
+{
+    $counting = array_fill(1, count($list), 0);
+
+    foreach ($list as $item) {
+        $counting[$item]++;
+    }
+
+    $curent = 0;
+    foreach ($counting as $item => $count) {
+        $counting[$item] += $curent;
+        $curent += $count;
+    }
+
+    $result = array_fill(0, count($list), 0);
+    for ($index = count($list) - 1; $index >= 0; $index--) {
+        $number = $list[$index];
+        $counting[$number]--;
+        $result[$counting[$number]] = $number;
+    }
+
+    return $result;
+}
+
 print_r(bogo_sort([7, 1, 0, 8, 5, 3, 6, 4, 9, 10, 2]));
 
